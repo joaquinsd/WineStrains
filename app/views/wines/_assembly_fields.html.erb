@@ -1,0 +1,14 @@
+<div class='mx-4'>
+    <div class='row'>
+        <div class="field">
+            <%= f.label :strain %>
+            <%= f.select :strain_id, options_from_collection_for_select(@strains, 'id', 'name'), include_blank: "Select Strain"%>
+        </div>
+
+        <div class="field mx-4">
+            <%= f.label :percentage %>
+            <%= f.number_field :percentage, in: 1.0..100.0, step: 1 %>
+        </div>
+    </div>
+
+</div>

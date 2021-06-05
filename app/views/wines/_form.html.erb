@@ -1,0 +1,35 @@
+<div class='container-fluid mx-auto'>
+
+    <div class='container my-5'>
+    <%= form_with(model: wine, local: true) do |form| %>
+      <% if wine.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(wine.errors.count, "error") %> prohibited this wine from being saved:</h2>
+
+          <ul>
+            <% wine.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+      </div>
+
+      <div id="assemblies" class='form-group ml-5'>
+        <%= form.fields_for :assemblies do |ff| %>
+            <%= render "assembly_fields", :f => ff %>
+        <% end %>
+      </div>
+
+      <div class="links my-4">
+        <%= link_to_add_association 'Add strain', form, :assemblies%>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Create wine</button>
+    <% end %>
+  </div>
+</div>
