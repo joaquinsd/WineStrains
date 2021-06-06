@@ -1,6 +1,6 @@
 class WinesController < ApplicationController
-  before_action :set_wine, only: [:show, :edit, :update, :destroy]
-  before_action :check_total, only: [:create]
+  before_action :set_wine, only: %i[show edit update destroy]
+  before_action :check_total, only: %i[create update]
 
   # GET /wines
   # GET /wines.json
@@ -74,7 +74,7 @@ class WinesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def wine_params
-      params.require(:wine).permit(:name, assemblies_attributes: [:strain_id, :percentage])
+      params.require(:wine).permit(:name, assemblies_attributes: %i[strain_id percentage])
     end
 
     def check_total
@@ -84,13 +84,12 @@ class WinesController < ApplicationController
           sum += (strain[:percentage]).to_i
         end
         if sum > 100
-        redirect_to new_wine_path, alert: 'Strain percentages sum is greater than 100'
+          redirect_to new_wine_path, alert: 'Strain percentages sum is greater than 100%'
         elsif sum < 100
-        redirect_to new_wine_path, alert: 'Strain percentages must sum 100'
+          redirect_to new_wine_path, alert: 'Strain percentages must sum 100%'
         end
       else
         redirect_to new_wine_path, alert: 'You must add a strain in order to make wine'
       end
-      
     end
 end

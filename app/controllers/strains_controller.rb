@@ -1,5 +1,5 @@
 class StrainsController < ApplicationController
-  before_action :set_strain, only: [:show, :edit, :update, :destroy]
+  before_action :set_strain, only: %i[show edit update destroy]
 
   # GET /strains
   # GET /strains.json

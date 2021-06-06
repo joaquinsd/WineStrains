@@ -1287,3 +1287,1246 @@ Processing by WinesController#index as HTML
 Completed 200 OK in 1308ms (Views: 1300.1ms | ActiveRecord: 6.3ms | Allocations: 124698)
 
 
+Started GET "/strains/new" for ::1 at 2021-06-05 17:48:23 -0400
+Processing by StrainsController#new as HTML
+  Rendering strains/new.html.erb within layouts/application
+  Rendered strains/_form.html.erb (Duration: 2.2ms | Allocations: 912)
+  Rendered strains/new.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1258)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 14.4ms | ActiveRecord: 0.0ms | Allocations: 22368)
+
+
+Started GET "/strains/new" for ::1 at 2021-06-05 17:48:23 -0400
+Processing by StrainsController#new as HTML
+  Rendering strains/new.html.erb within layouts/application
+  Rendered strains/_form.html.erb (Duration: 1.4ms | Allocations: 515)
+  Rendered strains/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 608)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 21.1ms | ActiveRecord: 0.0ms | Allocations: 21149)
+
+
+Started GET "/strains" for ::1 at 2021-06-05 17:48:25 -0400
+Processing by StrainsController#index as HTML
+  Rendering strains/index.html.erb within layouts/application
+  [1m[36mStrain Load (0.9ms)[0m  [1m[34mSELECT "strains".* FROM "strains"[0m
+  ↳ app/views/strains/index.html.erb:14
+  Rendered strains/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1733)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 18ms (Views: 15.4ms | ActiveRecord: 0.9ms | Allocations: 22405)
+
+
+Started GET "/wines" for ::1 at 2021-06-05 17:48:29 -0400
+Processing by WinesController#index as HTML
+  Rendering wines/index.html.erb within layouts/application
+  [1m[36mWine Load (0.8ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  ↳ app/views/wines/index.html.erb:15
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 1]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.5ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 2]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.7ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  Rendered wines/index.html.erb within layouts/application (Duration: 38.8ms | Allocations: 9511)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 53ms (Views: 45.6ms | ActiveRecord: 6.1ms | Allocations: 30061)
+
+
+Started GET "/wines/new" for ::1 at 2021-06-05 17:53:03 -0400
+Processing by WinesController#new as HTML
+  Rendering wines/new.html.erb within layouts/application
+  [1m[36mStrain Load (0.8ms)[0m  [1m[34mSELECT "strains".* FROM "strains"[0m
+  ↳ app/views/wines/_assembly_fields.html.erb:5
+  Rendered wines/_assembly_fields.html.erb (Duration: 14.8ms | Allocations: 1380)
+  Rendered wines/_form.html.erb (Duration: 19.8ms | Allocations: 2175)
+  Rendered wines/new.html.erb within layouts/application (Duration: 20.4ms | Allocations: 2268)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 37ms (Views: 34.2ms | ActiveRecord: 0.8ms | Allocations: 22822)
+
+
+Started POST "/wines" for ::1 at 2021-06-05 17:53:28 -0400
+Processing by WinesController#create as HTML
+  Parameters: {"authenticity_token"=>"iP/DAVI0yJ1ffsHkI0w6SHjlbmpv1XzXd3RV0hSWlCTTfui+QFqk4cGSt0UuxYhr/eNkfImdZX/sBl4YlGq2Yw==", "wine"=>{"name"=>"Santa Rita 120", "assemblies_attributes"=>{"1622929997600"=>{"strain_id"=>"1", "percentage"=>"80"}, "1622930002456"=>{"strain_id"=>"2", "percentage"=>"30"}}}}
+Redirected to http://localhost:3000/wines/new
+Filter chain halted as :check_total rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 567)
+
+
+Started GET "/wines/new" for ::1 at 2021-06-05 17:53:28 -0400
+Processing by WinesController#new as HTML
+  Rendering wines/new.html.erb within layouts/application
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains"[0m
+  ↳ app/views/wines/_assembly_fields.html.erb:5
+  Rendered wines/_assembly_fields.html.erb (Duration: 3.3ms | Allocations: 1380)
+  Rendered wines/_form.html.erb (Duration: 5.9ms | Allocations: 2172)
+  Rendered wines/new.html.erb within layouts/application (Duration: 6.3ms | Allocations: 2265)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 21ms (Views: 20.1ms | ActiveRecord: 0.4ms | Allocations: 22843)
+
+
+Started POST "/wines" for ::1 at 2021-06-05 17:53:53 -0400
+Processing by WinesController#create as HTML
+  Parameters: {"authenticity_token"=>"vy5WEhQIrOu4fOrFwsxDbkwR4k5i7Vv+prVvaTYZ8LjmJ4/yNomMptgo+EZ7tJrYjUxfi8O1Egp4CdENUK6Nrg==", "wine"=>{"name"=>"Santa Rita 120 Ensamblaje", "assemblies_attributes"=>{"1622930018364"=>{"strain_id"=>"1", "percentage"=>"70"}, "1622930023075"=>{"strain_id"=>"4", "percentage"=>"30"}}}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mStrain Load (0.7ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mStrain Load (0.6ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mWine Create (0.8ms)[0m  [1m[32mINSERT INTO "wines" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Santa Rita 120 Ensamblaje"], ["created_at", "2021-06-05 21:53:53.819152"], ["updated_at", "2021-06-05 21:53:53.819152"]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mAssembly Create (1.5ms)[0m  [1m[32mINSERT INTO "assemblies" ("wine_id", "strain_id", "percentage", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["wine_id", 3], ["strain_id", 1], ["percentage", 70], ["created_at", "2021-06-05 21:53:53.822937"], ["updated_at", "2021-06-05 21:53:53.822937"]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mAssembly Create (0.8ms)[0m  [1m[32mINSERT INTO "assemblies" ("wine_id", "strain_id", "percentage", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["wine_id", 3], ["strain_id", 4], ["percentage", 30], ["created_at", "2021-06-05 21:53:53.828187"], ["updated_at", "2021-06-05 21:53:53.828187"]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+Redirected to http://localhost:3000/wines/3
+Completed 302 Found in 30ms (ActiveRecord: 5.8ms | Allocations: 9255)
+
+
+Started GET "/wines/3" for ::1 at 2021-06-05 17:53:53 -0400
+Processing by WinesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mWine Load (0.3ms)[0m  [1m[34mSELECT "wines".* FROM "wines" WHERE "wines"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:72:in `set_wine'
+  Rendering wines/show.html.erb within layouts/application
+  Rendered wines/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 81)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 22.4ms | ActiveRecord: 0.3ms | Allocations: 21236)
+
+
+Started GET "/wines" for ::1 at 2021-06-05 17:53:55 -0400
+Processing by WinesController#index as HTML
+  Rendering wines/index.html.erb within layouts/application
+  [1m[36mWine Load (0.7ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  ↳ app/views/wines/index.html.erb:15
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 1]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.7ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 2]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.2ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 3]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  Rendered wines/index.html.erb within layouts/application (Duration: 45.4ms | Allocations: 13694)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 59ms (Views: 51.1ms | ActiveRecord: 6.2ms | Allocations: 34225)
+
+
+Started GET "/wines" for ::1 at 2021-06-05 17:54:44 -0400
+Processing by WinesController#index as HTML
+  Rendering wines/index.html.erb within layouts/application
+  [1m[36mWine Load (0.8ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  ↳ app/views/wines/index.html.erb:15
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 1]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 2]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.8ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 3]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  Rendered wines/index.html.erb within layouts/application (Duration: 57.0ms | Allocations: 13697)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 73ms (Views: 65.1ms | ActiveRecord: 6.1ms | Allocations: 34226)
+
+
+Started GET "/wines" for ::1 at 2021-06-06 11:34:17 -0400
+Processing by WinesController#index as HTML
+  Rendering wines/index.html.erb within layouts/application
+  [1m[36mWine Load (1.0ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  ↳ app/views/wines/index.html.erb:15
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 1]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 2]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.5ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 3]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  Rendered wines/index.html.erb within layouts/application (Duration: 48.5ms | Allocations: 13805)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 74ms (Views: 65.3ms | ActiveRecord: 7.7ms | Allocations: 34339)
+
+
+Started GET "/wines/new" for ::1 at 2021-06-06 11:34:19 -0400
+Processing by WinesController#new as HTML
+  Rendering wines/new.html.erb within layouts/application
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains"[0m
+  ↳ app/views/wines/_assembly_fields.html.erb:5
+  Rendered wines/_assembly_fields.html.erb (Duration: 3.4ms | Allocations: 1380)
+  Rendered wines/_form.html.erb (Duration: 6.9ms | Allocations: 2172)
+  Rendered wines/new.html.erb within layouts/application (Duration: 7.3ms | Allocations: 2265)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 31ms (Views: 28.5ms | ActiveRecord: 0.3ms | Allocations: 22827)
+
+
+Started POST "/wines" for ::1 at 2021-06-06 11:34:59 -0400
+Processing by WinesController#create as HTML
+  Parameters: {"authenticity_token"=>"SHSA14MneZVUOMXNtKn2NYzyV4O2/8EK2c00Xj6VVZ4T9atokUkV6crUs2y5IEQWCfRdlVC32KJCvz+Uvml32Q==", "wine"=>{"name"=>"Toro de Piedra", "assemblies_attributes"=>{"1622993688777"=>{"strain_id"=>"5", "percentage"=>"40"}, "1622993694706"=>{"strain_id"=>"1", "percentage"=>"60"}}}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mWine Create (3.0ms)[0m  [1m[32mINSERT INTO "wines" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Toro de Piedra"], ["created_at", "2021-06-06 15:34:59.064708"], ["updated_at", "2021-06-06 15:34:59.064708"]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mAssembly Create (1.0ms)[0m  [1m[32mINSERT INTO "assemblies" ("wine_id", "strain_id", "percentage", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["wine_id", 4], ["strain_id", 5], ["percentage", 40], ["created_at", "2021-06-06 15:34:59.070018"], ["updated_at", "2021-06-06 15:34:59.070018"]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mAssembly Create (0.6ms)[0m  [1m[32mINSERT INTO "assemblies" ("wine_id", "strain_id", "percentage", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["wine_id", 4], ["strain_id", 1], ["percentage", 60], ["created_at", "2021-06-06 15:34:59.075629"], ["updated_at", "2021-06-06 15:34:59.075629"]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+Redirected to http://localhost:3000/wines/4
+Completed 302 Found in 36ms (ActiveRecord: 6.9ms | Allocations: 9297)
+
+
+Started GET "/wines/4" for ::1 at 2021-06-06 11:34:59 -0400
+Processing by WinesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mWine Load (0.4ms)[0m  [1m[34mSELECT "wines".* FROM "wines" WHERE "wines"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:72:in `set_wine'
+  Rendering wines/show.html.erb within layouts/application
+  Rendered wines/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 80)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 13.9ms | ActiveRecord: 0.4ms | Allocations: 21206)
+
+
+Started GET "/wines" for ::1 at 2021-06-06 11:35:00 -0400
+Processing by WinesController#index as HTML
+  Rendering wines/index.html.erb within layouts/application
+  [1m[36mWine Load (0.7ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  ↳ app/views/wines/index.html.erb:15
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 1]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.6ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 2]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 3]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 4]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (1.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  Rendered wines/index.html.erb within layouts/application (Duration: 56.4ms | Allocations: 18028)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 78ms (Views: 68.7ms | ActiveRecord: 7.6ms | Allocations: 38561)
+
+
+Started GET "/wines/new" for ::1 at 2021-06-06 11:36:53 -0400
+Processing by WinesController#new as HTML
+  Rendering wines/new.html.erb within layouts/application
+  [1m[36mStrain Load (0.5ms)[0m  [1m[34mSELECT "strains".* FROM "strains"[0m
+  ↳ app/views/wines/_assembly_fields.html.erb:5
+  Rendered wines/_assembly_fields.html.erb (Duration: 5.5ms | Allocations: 1380)
+  Rendered wines/_form.html.erb (Duration: 8.4ms | Allocations: 2172)
+  Rendered wines/new.html.erb within layouts/application (Duration: 9.0ms | Allocations: 2265)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 23.5ms | ActiveRecord: 0.5ms | Allocations: 22823)
+
+
+Started POST "/wines" for ::1 at 2021-06-06 11:38:01 -0400
+Processing by WinesController#create as HTML
+  Parameters: {"authenticity_token"=>"cTPONZCbfEkR5jlKWpgfV8bbqWQnDxfjUOWJ1BkJEw0qsuWKgvUQNY8KT+tXEa10Q92jcsFHDkvLl4IemfUxSg==", "wine"=>{"name"=>"Ensamblaje Joaquin", "assemblies_attributes"=>{"1622993820973"=>{"strain_id"=>"1", "percentage"=>"15"}, "1622993829109"=>{"strain_id"=>"2", "percentage"=>"20"}, "1622993833922"=>{"strain_id"=>"3", "percentage"=>"15"}, "1622993839456"=>{"strain_id"=>"4", "percentage"=>"15"}, "1622993854094"=>{"strain_id"=>"5", "percentage"=>"15"}, "1622993860606"=>{"strain_id"=>"6", "percentage"=>"20"}}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mStrain Load (0.5ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mStrain Load (0.5ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mWine Create (0.5ms)[0m  [1m[32mINSERT INTO "wines" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Ensamblaje Joaquin"], ["created_at", "2021-06-06 15:38:01.922872"], ["updated_at", "2021-06-06 15:38:01.922872"]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mAssembly Create (0.7ms)[0m  [1m[32mINSERT INTO "assemblies" ("wine_id", "strain_id", "percentage", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["wine_id", 5], ["strain_id", 1], ["percentage", 15], ["created_at", "2021-06-06 15:38:01.926753"], ["updated_at", "2021-06-06 15:38:01.926753"]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mAssembly Create (0.7ms)[0m  [1m[32mINSERT INTO "assemblies" ("wine_id", "strain_id", "percentage", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["wine_id", 5], ["strain_id", 2], ["percentage", 20], ["created_at", "2021-06-06 15:38:01.929822"], ["updated_at", "2021-06-06 15:38:01.929822"]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mAssembly Create (0.9ms)[0m  [1m[32mINSERT INTO "assemblies" ("wine_id", "strain_id", "percentage", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["wine_id", 5], ["strain_id", 3], ["percentage", 15], ["created_at", "2021-06-06 15:38:01.934795"], ["updated_at", "2021-06-06 15:38:01.934795"]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mAssembly Create (0.9ms)[0m  [1m[32mINSERT INTO "assemblies" ("wine_id", "strain_id", "percentage", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["wine_id", 5], ["strain_id", 4], ["percentage", 15], ["created_at", "2021-06-06 15:38:01.939363"], ["updated_at", "2021-06-06 15:38:01.939363"]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mAssembly Create (0.6ms)[0m  [1m[32mINSERT INTO "assemblies" ("wine_id", "strain_id", "percentage", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["wine_id", 5], ["strain_id", 5], ["percentage", 15], ["created_at", "2021-06-06 15:38:01.942770"], ["updated_at", "2021-06-06 15:38:01.942770"]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mAssembly Create (0.7ms)[0m  [1m[32mINSERT INTO "assemblies" ("wine_id", "strain_id", "percentage", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["wine_id", 5], ["strain_id", 6], ["percentage", 20], ["created_at", "2021-06-06 15:38:01.945776"], ["updated_at", "2021-06-06 15:38:01.945776"]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+Redirected to http://localhost:3000/wines/5
+Completed 302 Found in 61ms (ActiveRecord: 8.9ms | Allocations: 20746)
+
+
+Started GET "/wines/5" for ::1 at 2021-06-06 11:38:02 -0400
+Processing by WinesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mWine Load (0.6ms)[0m  [1m[34mSELECT "wines".* FROM "wines" WHERE "wines"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:72:in `set_wine'
+  Rendering wines/show.html.erb within layouts/application
+  Rendered wines/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 80)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 24.9ms | ActiveRecord: 0.6ms | Allocations: 21216)
+
+
+Started GET "/wines" for ::1 at 2021-06-06 11:38:03 -0400
+Processing by WinesController#index as HTML
+  Rendering wines/index.html.erb within layouts/application
+  [1m[36mWine Load (0.6ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  ↳ app/views/wines/index.html.erb:15
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 1]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 2]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.6ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 3]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 4]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 5]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.6ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  Rendered wines/index.html.erb within layouts/application (Duration: 82.4ms | Allocations: 29197)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 102ms (Views: 90.8ms | ActiveRecord: 9.8ms | Allocations: 49726)
+
+
+Started GET "/wines/new" for ::1 at 2021-06-06 11:45:21 -0400
+Processing by WinesController#new as HTML
+  Rendering wines/new.html.erb within layouts/application
+  [1m[36mStrain Load (0.8ms)[0m  [1m[34mSELECT "strains".* FROM "strains"[0m
+  ↳ app/views/wines/_assembly_fields.html.erb:5
+  Rendered wines/_assembly_fields.html.erb (Duration: 7.3ms | Allocations: 4037)
+  Rendered wines/_form.html.erb (Duration: 20.0ms | Allocations: 10923)
+  Rendered wines/new.html.erb within layouts/application (Duration: 22.1ms | Allocations: 11291)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 203ms (Views: 90.8ms | ActiveRecord: 0.8ms | Allocations: 37983)
+
+
+Started GET "/wines/new" for ::1 at 2021-06-06 11:45:32 -0400
+Processing by WinesController#new as HTML
+  Rendering wines/new.html.erb within layouts/application
+  [1m[36mStrain Load (0.9ms)[0m  [1m[34mSELECT "strains".* FROM "strains"[0m
+  ↳ app/views/wines/_assembly_fields.html.erb:5
+  Rendered wines/_assembly_fields.html.erb (Duration: 10.0ms | Allocations: 1545)
+  Rendered wines/_form.html.erb (Duration: 17.4ms | Allocations: 2842)
+  Rendered wines/new.html.erb within layouts/application (Duration: 19.0ms | Allocations: 3210)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 82ms (Views: 79.7ms | ActiveRecord: 0.9ms | Allocations: 24789)
+
+
+Started POST "/wines" for ::1 at 2021-06-06 11:47:01 -0400
+Processing by WinesController#create as HTML
+  Parameters: {"authenticity_token"=>"AdR1VVEyUtyJ2IY1Qo1K1CEL2X97dJAYUQGOMoVt3hlY3ay1c7NykemMlLb79ZNi4FZkutos2eyPvTBW49qjDw==", "wine"=>{"name"=>"Casillero del Diablo Ensamblaje", "assemblies_attributes"=>{"1622994334498"=>{"strain_id"=>"1", "percentage"=>"25"}, "1622994406702"=>{"strain_id"=>"4", "percentage"=>"40"}, "1622994413629"=>{"strain_id"=>"5", "percentage"=>"35"}}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mStrain Load (0.6ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mStrain Load (0.6ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mStrain Load (0.5ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mWine Create (1.3ms)[0m  [1m[32mINSERT INTO "wines" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Casillero del Diablo Ensamblaje"], ["created_at", "2021-06-06 15:47:01.826230"], ["updated_at", "2021-06-06 15:47:01.826230"]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mAssembly Create (1.6ms)[0m  [1m[32mINSERT INTO "assemblies" ("wine_id", "strain_id", "percentage", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["wine_id", 6], ["strain_id", 1], ["percentage", 25], ["created_at", "2021-06-06 15:47:01.830795"], ["updated_at", "2021-06-06 15:47:01.830795"]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mAssembly Create (0.9ms)[0m  [1m[32mINSERT INTO "assemblies" ("wine_id", "strain_id", "percentage", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["wine_id", 6], ["strain_id", 4], ["percentage", 40], ["created_at", "2021-06-06 15:47:01.834788"], ["updated_at", "2021-06-06 15:47:01.834788"]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[36mAssembly Create (0.7ms)[0m  [1m[32mINSERT INTO "assemblies" ("wine_id", "strain_id", "percentage", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["wine_id", 6], ["strain_id", 5], ["percentage", 35], ["created_at", "2021-06-06 15:47:01.838123"], ["updated_at", "2021-06-06 15:47:01.838123"]]
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/wines_controller.rb:34:in `block in create'
+Redirected to http://localhost:3000/wines/6
+Completed 302 Found in 65ms (ActiveRecord: 7.9ms | Allocations: 13203)
+
+
+Started GET "/wines/6" for ::1 at 2021-06-06 11:47:01 -0400
+Processing by WinesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mWine Load (0.3ms)[0m  [1m[34mSELECT "wines".* FROM "wines" WHERE "wines"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:72:in `set_wine'
+  Rendering wines/show.html.erb within layouts/application
+  Rendered wines/show.html.erb within layouts/application (Duration: 1.5ms | Allocations: 234)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 14.6ms | ActiveRecord: 0.3ms | Allocations: 21629)
+
+
+Started GET "/wines" for ::1 at 2021-06-06 11:47:03 -0400
+Processing by WinesController#index as HTML
+  Rendering wines/index.html.erb within layouts/application
+  [1m[36mWine Load (0.4ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  ↳ app/views/wines/index.html.erb:15
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 1]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.7ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 2]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.7ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.6ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 3]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 4]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 5]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 6]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  Rendered wines/index.html.erb within layouts/application (Duration: 110.0ms | Allocations: 35685)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 124ms (Views: 110.6ms | ActiveRecord: 11.9ms | Allocations: 56359)
+
+
+Started DELETE "/wines/2" for ::1 at 2021-06-06 11:47:19 -0400
+Processing by WinesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"cGLhN7XjfoSQ+MG58aHoer427z699CY0Xzo8PB5s5TUpazjXl2JeyfCs0zpI2THMf2tS+xysb8CBhoJYeNuYIw==", "id"=>"2"}
+  [1m[36mWine Load (0.7ms)[0m  [1m[34mSELECT "wines".* FROM "wines" WHERE "wines"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:72:in `set_wine'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/wines_controller.rb:62:in `destroy'
+  [1m[36mAssembly Load (0.7ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 2]]
+  ↳ app/controllers/wines_controller.rb:62:in `destroy'
+  [1m[36mAssembly Destroy (0.5ms)[0m  [1m[31mDELETE FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/wines_controller.rb:62:in `destroy'
+  [1m[36mAssembly Destroy (0.3ms)[0m  [1m[31mDELETE FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/wines_controller.rb:62:in `destroy'
+  [1m[36mAssembly Destroy (0.4ms)[0m  [1m[31mDELETE FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/wines_controller.rb:62:in `destroy'
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains" INNER JOIN "assemblies" ON "strains"."id" = "assemblies"."strain_id" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 2]]
+  ↳ app/controllers/wines_controller.rb:62:in `destroy'
+  [1m[36mWine Destroy (0.5ms)[0m  [1m[31mDELETE FROM "wines" WHERE "wines"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/wines_controller.rb:62:in `destroy'
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/wines_controller.rb:62:in `destroy'
+Redirected to http://localhost:3000/wines
+Completed 302 Found in 44ms (ActiveRecord: 5.0ms | Allocations: 12547)
+
+
+Started GET "/wines" for ::1 at 2021-06-06 11:47:19 -0400
+Processing by WinesController#index as HTML
+  Rendering wines/index.html.erb within layouts/application
+  [1m[36mWine Load (0.6ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  ↳ app/views/wines/index.html.erb:15
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 1]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 3]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 4]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 5]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 6]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  Rendered wines/index.html.erb within layouts/application (Duration: 86.4ms | Allocations: 29200)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 109ms (Views: 98.9ms | ActiveRecord: 9.1ms | Allocations: 49755)
+
+
+Started GET "/wines" for ::1 at 2021-06-06 11:48:33 -0400
+Processing by WinesController#index as HTML
+  Rendering wines/index.html.erb within layouts/application
+  [1m[36mWine Load (0.5ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  ↳ app/views/wines/index.html.erb:15
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 1]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.7ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.8ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 3]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 4]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 5]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (1.2ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (1.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 6]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  Rendered wines/index.html.erb within layouts/application (Duration: 92.7ms | Allocations: 29198)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 4753ms (Views: 4739.2ms | ActiveRecord: 12.0ms | Allocations: 142773)
+
+
+Started GET "/wines/1/edit" for ::1 at 2021-06-06 11:50:48 -0400
+Processing by WinesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWine Load (0.6ms)[0m  [1m[34mSELECT "wines".* FROM "wines" WHERE "wines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:72:in `set_wine'
+  Rendering wines/edit.html.erb within layouts/application
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 1]]
+  ↳ app/views/wines/_form.html.erb:23
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains"[0m
+  ↳ app/views/wines/_assembly_fields.html.erb:5
+  Rendered wines/_assembly_fields.html.erb (Duration: 17.0ms | Allocations: 4201)
+  Rendered wines/_assembly_fields.html.erb (Duration: 3.9ms | Allocations: 757)
+  Rendered wines/_form.html.erb (Duration: 225.0ms | Allocations: 13327)
+  Rendered wines/edit.html.erb within layouts/application (Duration: 268.8ms | Allocations: 13728)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 400ms (Views: 271.9ms | ActiveRecord: 109.5ms | Allocations: 41544)
+
+
+Started PATCH "/wines/1" for ::1 at 2021-06-06 11:50:57 -0400
+Processing by WinesController#update as HTML
+  Parameters: {"authenticity_token"=>"KdL9L4GOcW+215O/FfpXmF9WnS2klvLumWo72/62XHfegsoCIZuu7HA3ej05bxLAi+9ET7uvlol1EJ9f+zXztg==", "wine"=>{"name"=>"120 Cabernet Sauvignon", "assemblies_attributes"=>{"0"=>{"strain_id"=>"1", "percentage"=>"100", "id"=>"1"}, "1622994651522"=>{"strain_id"=>"2", "percentage"=>"30"}}}, "id"=>"1"}
+  [1m[36mWine Load (0.5ms)[0m  [1m[34mSELECT "wines".* FROM "wines" WHERE "wines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:72:in `set_wine'
+Redirected to http://localhost:3000/wines/new
+Filter chain halted as :check_total rendered or redirected
+Completed 302 Found in 6ms (ActiveRecord: 0.5ms | Allocations: 1154)
+
+
+Started GET "/wines/new" for ::1 at 2021-06-06 11:50:57 -0400
+Processing by WinesController#new as HTML
+  Rendering wines/new.html.erb within layouts/application
+  [1m[36mStrain Load (0.5ms)[0m  [1m[34mSELECT "strains".* FROM "strains"[0m
+  ↳ app/views/wines/_assembly_fields.html.erb:5
+  Rendered wines/_assembly_fields.html.erb (Duration: 3.5ms | Allocations: 1380)
+  Rendered wines/_form.html.erb (Duration: 6.9ms | Allocations: 2180)
+  Rendered wines/new.html.erb within layouts/application (Duration: 7.9ms | Allocations: 2408)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 20.4ms | ActiveRecord: 0.5ms | Allocations: 23326)
+
+
+Started GET "/wines" for ::1 at 2021-06-06 11:51:00 -0400
+Processing by WinesController#index as HTML
+  Rendering wines/index.html.erb within layouts/application
+  [1m[36mWine Load (0.6ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  ↳ app/views/wines/index.html.erb:15
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 1]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 3]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 4]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 5]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.2ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 6]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  Rendered wines/index.html.erb within layouts/application (Duration: 83.9ms | Allocations: 29728)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 108ms (Views: 96.8ms | ActiveRecord: 9.0ms | Allocations: 50606)
+
+
+Started GET "/wines/1/edit" for ::1 at 2021-06-06 11:51:05 -0400
+Processing by WinesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWine Load (0.8ms)[0m  [1m[34mSELECT "wines".* FROM "wines" WHERE "wines"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/wines_controller.rb:72:in `set_wine'
+  Rendering wines/edit.html.erb within layouts/application
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 1]]
+  ↳ app/views/wines/_form.html.erb:23
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains"[0m
+  ↳ app/views/wines/_assembly_fields.html.erb:5
+  Rendered wines/_assembly_fields.html.erb (Duration: 3.7ms | Allocations: 1399)
+  Rendered wines/_assembly_fields.html.erb (Duration: 1.2ms | Allocations: 592)
+  Rendered wines/_form.html.erb (Duration: 11.4ms | Allocations: 3690)
+  Rendered wines/edit.html.erb within layouts/application (Duration: 11.9ms | Allocations: 3814)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 23.2ms | ActiveRecord: 1.6ms | Allocations: 25153)
+
+
+Started GET "/wines" for ::1 at 2021-06-06 11:51:12 -0400
+Processing by WinesController#index as HTML
+  Rendering wines/index.html.erb within layouts/application
+  [1m[36mWine Load (0.5ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  ↳ app/views/wines/index.html.erb:15
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 1]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.4ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 3]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (1.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 4]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 5]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.3ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.2ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mStrain Load (0.2ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "assemblies"."id" FROM "assemblies" WHERE "assemblies"."wine_id" = $1[0m  [["wine_id", 6]]
+  ↳ app/models/wine.rb:8:in `order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mAssembly Load (0.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Strain Load (0.0ms)[0m  [1m[34mSELECT "strains".* FROM "strains" WHERE "strains"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/models/wine.rb:9:in `block in order_strains'
+  Rendered wines/index.html.erb within layouts/application (Duration: 92.5ms | Allocations: 29201)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 106ms (Views: 94.5ms | ActiveRecord: 9.5ms | Allocations: 49934)
+
+
