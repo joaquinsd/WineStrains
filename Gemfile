@@ -57,3 +57,5 @@ gem 'cocoon', '~> 1.2'
 # Added jQuery and Bootstrap For javascript and style
 gem 'bootstrap'
 gem 'jquery-rails', '~> 4.4'
+# Added Devise for user authentication
+gem 'devise'
