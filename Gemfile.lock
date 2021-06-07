@@ -90,6 +90,8 @@ GEM
       warden (~> 1.2.3)
     erubi (1.10.0)
     execjs (2.8.1)
+    faker (2.14.0)
+      i18n (>= 1.6, < 2)
     ffi (1.15.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -230,6 +232,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   cocoon (~> 1.2)
   devise
+  faker
   jbuilder (~> 2.7)
   jquery-rails (~> 4.4)
   listen (~> 3.2)

@@ -19,11 +19,16 @@ class WinesController < ApplicationController
   def new
     @wine = Wine.new
     @strains = Strain.all
+    @oenologists = Oenologist.all
+
+    
   end
 
   # GET /wines/1/edit
   def edit
     @strains = Strain.all
+    @oenologists = Oenologist.all
+
   end
 
   # POST /wines
@@ -31,6 +36,8 @@ class WinesController < ApplicationController
   def create
     @wine = Wine.new(wine_params)
     @strains = Strain.all
+    @oenologists = Oenologist.all
+
 
     respond_to do |format|
       if @wine.save
@@ -76,7 +83,8 @@ class WinesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def wine_params
-      params.require(:wine).permit(:name, assemblies_attributes: %i[strain_id percentage])
+      params.require(:wine).permit(:name, assemblies_attributes: %i[strain_id percentage],
+                                    oenologists_wines_attributes: %i[id grade oenologist_id])
     end
 
     def check_total

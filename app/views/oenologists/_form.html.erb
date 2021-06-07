@@ -1,0 +1,44 @@
+<%= form_with(model: oenologist, local: true) do |form| %>
+  <% if oenologist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(oenologist.errors.count, "error") %> prohibited this oenologist from being saved:</h2>
+
+      <ul>
+        <% oenologist.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :age %>
+    <%= form.number_field :age %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :nationality %>
+    <%= form.text_field :nationality %>
+  </div>
+
+
+
+  <div id="magazine_position" class='form-group ml-5'>
+    <%= form.fields_for :oenologist_magazine_positions do |ff| %>
+        <%= render "oenologist_magazine_position_fields", :f => ff %>
+    <% end %>
+  </div>
+
+  <div class="links my-4">
+    <%= link_to_add_association 'Add Magazine & Position', form, :oenologist_magazine_positions%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

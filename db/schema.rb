@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_06_161852) do
+ActiveRecord::Schema.define(version: 2021_06_06_172329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,43 @@ ActiveRecord::Schema.define(version: 2021_06_06_161852) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["strain_id"], name: "index_assemblies_on_strain_id"
     t.index ["wine_id"], name: "index_assemblies_on_wine_id"
+  end
+
+  create_table "magazines", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "oenologist_magazine_positions", force: :cascade do |t|
+    t.bigint "oenologist_id", null: false
+    t.bigint "magazine_id", null: false
+    t.bigint "position_id", null: false
+    t.index ["magazine_id"], name: "index_oenologist_magazine_positions_on_magazine_id"
+    t.index ["oenologist_id"], name: "index_oenologist_magazine_positions_on_oenologist_id"
+    t.index ["position_id"], name: "index_oenologist_magazine_positions_on_position_id"
+  end
+
+  create_table "oenologists", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.string "nationality"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "oenologists_wines", id: false, force: :cascade do |t|
+    t.bigint "oenologist_id", null: false
+    t.bigint "wine_id", null: false
+    t.float "grade", default: 0.0
+    t.index ["oenologist_id", "wine_id"], name: "index_oenologists_wines_on_oenologist_id_and_wine_id"
+    t.index ["wine_id", "oenologist_id"], name: "index_oenologists_wines_on_wine_id_and_oenologist_id"
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "strains", force: :cascade do |t|
@@ -52,4 +89,9 @@ ActiveRecord::Schema.define(version: 2021_06_06_161852) do
 
   add_foreign_key "assemblies", "strains"
   add_foreign_key "assemblies", "wines"
+  add_foreign_key "oenologist_magazine_positions", "magazines"
+  add_foreign_key "oenologist_magazine_positions", "oenologists"
+  add_foreign_key "oenologist_magazine_positions", "positions"
+  add_foreign_key "oenologists_wines", "oenologists"
+  add_foreign_key "oenologists_wines", "wines"
 end

@@ -29,6 +29,17 @@
         <%= link_to_add_association 'Add strain', form, :assemblies%>
       </div>
 
+      <div id="oenologist_wine" class='form-group ml-5'>
+        <%= form.fields_for :oenologists_wines do |ff| %>
+            <%= render "oenologists_wine_fields", :f => ff %>
+        <% end %>
+      </div>
+
+      <div class="links my-4">
+        <%= link_to_add_association 'Add grade', form, :oenologists_wines%>
+      </div>
+
+
       <button type="submit" class="btn btn-primary">Create wine</button>
     <% end %>
   </div>

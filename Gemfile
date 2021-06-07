@@ -59,3 +59,5 @@ gem 'bootstrap'
 gem 'jquery-rails', '~> 4.4'
 # Added Devise for user authentication
 gem 'devise'
+# Use Faker for generation of quotes
+gem 'faker'
