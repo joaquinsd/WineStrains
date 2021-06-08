@@ -35,3 +35,5 @@ Magazine.destroy_all
   pos = Position.find(rand(Position.first.id..Position.last.id))
   Oenologist.create(name: name, age: age, nationality: nationality, oenologist_magazine_positions_attributes: [magazine_id: mag.id, position_id: pos.id] )
 end
+
+User.create(email: 'admin@example.com', admin: true, password: '123456', password_confirmation: '123456')

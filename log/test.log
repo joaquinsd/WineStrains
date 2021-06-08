@@ -1,0 +1,531 @@
+  [1m[35m (110.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "cepas_test"[0m
+  [1m[35m (345.6ms)[0m  [1m[35mCREATE DATABASE "cepas_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "assemblies" CASCADE[0m
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE "assemblies" ("id" bigserial primary key, "wine_id" bigint NOT NULL, "strain_id" bigint NOT NULL, "percentage" integer NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE  INDEX  "index_assemblies_on_strain_id" ON "assemblies"  ("strain_id")[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE  INDEX  "index_assemblies_on_wine_id" ON "assemblies"  ("wine_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "magazines" CASCADE[0m
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE TABLE "magazines" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "oenologist_magazine_positions" CASCADE[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "oenologist_magazine_positions" ("id" bigserial primary key, "oenologist_id" bigint NOT NULL, "magazine_id" bigint NOT NULL, "position_id" bigint NOT NULL)[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE  INDEX  "index_oenologist_magazine_positions_on_magazine_id" ON "oenologist_magazine_positions"  ("magazine_id")[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE  INDEX  "index_oenologist_magazine_positions_on_oenologist_id" ON "oenologist_magazine_positions"  ("oenologist_id")[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE  INDEX  "index_oenologist_magazine_positions_on_position_id" ON "oenologist_magazine_positions"  ("position_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "oenologists" CASCADE[0m
+  [1m[35m (9.2ms)[0m  [1m[35mCREATE TABLE "oenologists" ("id" bigserial primary key, "name" character varying, "age" integer, "nationality" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "oenologists_wines" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "oenologists_wines" ("oenologist_id" bigint NOT NULL, "wine_id" bigint NOT NULL, "grade" float DEFAULT 0.0)[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE  INDEX  "index_oenologists_wines_on_oenologist_id_and_wine_id" ON "oenologists_wines"  ("oenologist_id", "wine_id")[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE  INDEX  "index_oenologists_wines_on_wine_id_and_oenologist_id" ON "oenologists_wines"  ("wine_id", "oenologist_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "positions" CASCADE[0m
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE TABLE "positions" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "strains" CASCADE[0m
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE TABLE "strains" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (13.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "admin" boolean DEFAULT FALSE, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "wines" CASCADE[0m
+  [1m[35m (10.0ms)[0m  [1m[35mCREATE TABLE "wines" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (5.2ms)[0m  [1m[35mALTER TABLE "assemblies" ADD CONSTRAINT "fk_rails_a7b0b6db39"
+FOREIGN KEY ("strain_id")
+  REFERENCES "strains" ("id")
+[0m
+  [1m[35m (3.4ms)[0m  [1m[35mALTER TABLE "assemblies" ADD CONSTRAINT "fk_rails_8c788356d3"
+FOREIGN KEY ("wine_id")
+  REFERENCES "wines" ("id")
+[0m
+  [1m[35m (3.5ms)[0m  [1m[35mALTER TABLE "oenologist_magazine_positions" ADD CONSTRAINT "fk_rails_786364bc3b"
+FOREIGN KEY ("magazine_id")
+  REFERENCES "magazines" ("id")
+[0m
+  [1m[35m (3.6ms)[0m  [1m[35mALTER TABLE "oenologist_magazine_positions" ADD CONSTRAINT "fk_rails_dd1bebf3d3"
+FOREIGN KEY ("oenologist_id")
+  REFERENCES "oenologists" ("id")
+[0m
+  [1m[35m (5.1ms)[0m  [1m[35mALTER TABLE "oenologist_magazine_positions" ADD CONSTRAINT "fk_rails_c4a4a3d0b5"
+FOREIGN KEY ("position_id")
+  REFERENCES "positions" ("id")
+[0m
+  [1m[35m (4.4ms)[0m  [1m[35mALTER TABLE "oenologists_wines" ADD CONSTRAINT "fk_rails_41f560a9ce"
+FOREIGN KEY ("oenologist_id")
+  REFERENCES "oenologists" ("id")
+[0m
+  [1m[35m (3.2ms)[0m  [1m[35mALTER TABLE "oenologists_wines" ADD CONSTRAINT "fk_rails_49d3e9c26a"
+FOREIGN KEY ("wine_id")
+  REFERENCES "wines" ("id")
+[0m
+  [1m[35m (13.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210606172329)[0m
+  [1m[35m (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210605212804),
+(20210605212954),
+(20210605213024),
+(20210606161852),
+(20210606164925),
+(20210606165010),
+(20210606165209),
+(20210606165730),
+(20210606171335);
+
+[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-06-08 02:50:10.233701"], ["updated_at", "2021-06-08 02:50:10.233701"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "cd474479bc7f4a9168d49fdbf35d10df65a6e7be"], ["created_at", "2021-06-08 02:50:10.252063"], ["updated_at", "2021-06-08 02:50:10.252063"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 1705)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 140)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWine Create (1.5ms)[0m  [1m[32mINSERT INTO "wines" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Wine"], ["created_at", "2021-06-08 02:50:10.481680"], ["updated_at", "2021-06-08 02:50:10.481680"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.cl"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@test.cl"], ["encrypted_password", "$2a$04$p15UfLySKYjc.u6sv70R5Oe9imj4yutKuYmz.ir2RkCw2zSuuiKjm"], ["created_at", "2021-06-08 02:50:10.525375"], ["updated_at", "2021-06-08 02:50:10.525375"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 1705)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 140)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWine Create (1.0ms)[0m  [1m[32mINSERT INTO "wines" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Wine"], ["created_at", "2021-06-08 02:53:03.002858"], ["updated_at", "2021-06-08 02:53:03.002858"]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.cl"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@test.cl"], ["encrypted_password", "$2a$04$KMVNEXq1rHcpHL98buHaMuyvISB1vUzEtKLe7EAnTOLV/seZYdO42"], ["created_at", "2021-06-08 02:53:03.039132"], ["updated_at", "2021-06-08 02:53:03.039132"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 1705)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 140)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 140)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWine Create (1.2ms)[0m  [1m[32mINSERT INTO "wines" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Wine"], ["created_at", "2021-06-08 02:54:19.047093"], ["updated_at", "2021-06-08 02:54:19.047093"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.cl"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@test.cl"], ["encrypted_password", "$2a$04$SbGUD8zTPUzDY0mMlOh9b.pFlNKck2TPmq7Z/VrtwlAx8CHbYp.d."], ["created_at", "2021-06-08 02:54:19.086993"], ["updated_at", "2021-06-08 02:54:19.086993"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 8ms (ActiveRecord: 0.0ms | Allocations: 1718)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 152)
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 140)
+  [1m[36mWine Load (1.3ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWine Create (0.8ms)[0m  [1m[32mINSERT INTO "wines" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Wine"], ["created_at", "2021-06-08 02:59:23.712556"], ["updated_at", "2021-06-08 02:59:23.712556"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.cl"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@test.cl"], ["encrypted_password", "$2a$04$fyXVM8cOQoWL/ZKL2l.X8.XkpCPex9yC9JlasdRo0SiZtfd23AqXG"], ["created_at", "2021-06-08 02:59:23.740697"], ["updated_at", "2021-06-08 02:59:23.740697"]]
+  [1m[35m (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by WinesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWine Load (0.6ms)[0m  [1m[34mSELECT "wines".* FROM "wines" WHERE "wines"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Redirected to http://test.host/
+Filter chain halted as :authorize_admin! rendered or redirected
+Completed 302 Found in 10ms (ActiveRecord: 1.6ms | Allocations: 808)
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 8ms (ActiveRecord: 0.0ms | Allocations: 1718)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 152)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 140)
+  [1m[36mWine Load (0.7ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWine Create (0.9ms)[0m  [1m[32mINSERT INTO "wines" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Wine"], ["created_at", "2021-06-08 03:01:14.100004"], ["updated_at", "2021-06-08 03:01:14.100004"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.cl"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@test.cl"], ["encrypted_password", "$2a$04$cDY4jfKMa05mOqCJ31z9IeUfMNYxVYCNfwJQvg6gi3bIFsH.JiGs2"], ["created_at", "2021-06-08 03:01:14.133443"], ["updated_at", "2021-06-08 03:01:14.133443"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by WinesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWine Load (0.5ms)[0m  [1m[34mSELECT "wines".* FROM "wines" WHERE "wines"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Redirected to http://test.host/
+Filter chain halted as :authorize_admin! rendered or redirected
+Completed 302 Found in 10ms (ActiveRecord: 1.4ms | Allocations: 808)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 8ms (ActiveRecord: 0.0ms | Allocations: 1718)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 152)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 140)
+  [1m[36mWine Load (0.7ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWine Create (1.5ms)[0m  [1m[32mINSERT INTO "wines" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Wine"], ["created_at", "2021-06-08 03:02:51.376688"], ["updated_at", "2021-06-08 03:02:51.376688"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.cl"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@test.cl"], ["encrypted_password", "$2a$04$WK9.ZD43NbTL4JL.KZcwX.csLFu/OGLMBZZNUTeh6dZFmxj5bFcby"], ["created_at", "2021-06-08 03:02:51.409871"], ["updated_at", "2021-06-08 03:02:51.409871"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by WinesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mWine Load (0.6ms)[0m  [1m[34mSELECT "wines".* FROM "wines" WHERE "wines"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Redirected to http://test.host/
+Filter chain halted as :authorize_admin! rendered or redirected
+Completed 302 Found in 11ms (ActiveRecord: 2.3ms | Allocations: 808)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 7ms (ActiveRecord: 0.0ms | Allocations: 1718)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 152)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 140)
+  [1m[36mWine Load (1.1ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWine Create (1.3ms)[0m  [1m[32mINSERT INTO "wines" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Wine"], ["created_at", "2021-06-08 03:18:44.719298"], ["updated_at", "2021-06-08 03:18:44.719298"]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.cl"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@test.cl"], ["encrypted_password", "$2a$04$r8LEq9jhgn0fL0LBKf45r.nz6Hjm2untP1UkdxhUBx9fCBmxCp55i"], ["created_at", "2021-06-08 03:18:44.753106"], ["updated_at", "2021-06-08 03:18:44.753106"]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by WinesController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mWine Load (0.5ms)[0m  [1m[34mSELECT "wines".* FROM "wines" WHERE "wines"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+Redirected to http://test.host/
+Filter chain halted as :authorize_admin! rendered or redirected
+Completed 302 Found in 9ms (ActiveRecord: 1.4ms | Allocations: 808)
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 8ms (ActiveRecord: 0.0ms | Allocations: 1718)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 152)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 140)
+  [1m[36mWine Load (0.7ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWine Create (1.2ms)[0m  [1m[32mINSERT INTO "wines" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Wine"], ["created_at", "2021-06-08 03:20:05.768551"], ["updated_at", "2021-06-08 03:20:05.768551"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.cl"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@test.cl"], ["encrypted_password", "$2a$04$hCmPV54D2GTYWFtkblGqFO6aYJGVHxRW8tEvI0Nq9N3Xe35niIzze"], ["created_at", "2021-06-08 03:20:05.801529"], ["updated_at", "2021-06-08 03:20:05.801529"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by WinesController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mWine Load (0.4ms)[0m  [1m[34mSELECT "wines".* FROM "wines" WHERE "wines"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+Redirected to http://test.host/
+Filter chain halted as :authorize_admin! rendered or redirected
+Completed 302 Found in 10ms (ActiveRecord: 1.4ms | Allocations: 808)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Create (1.4ms)[0m  [1m[32mINSERT INTO "strains" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "unique name"], ["created_at", "2021-06-08 03:22:10.263554"], ["updated_at", "2021-06-08 03:22:10.263554"]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Create (0.9ms)[0m  [1m[32mINSERT INTO "strains" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", ""], ["created_at", "2021-06-08 03:22:10.286260"], ["updated_at", "2021-06-08 03:22:10.286260"]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Create (1.1ms)[0m  [1m[32mINSERT INTO "strains" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-06-08 03:22:10.347329"], ["updated_at", "2021-06-08 03:22:10.347329"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Create (0.9ms)[0m  [1m[32mINSERT INTO "strains" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Carmenere"], ["created_at", "2021-06-08 03:22:10.358548"], ["updated_at", "2021-06-08 03:22:10.358548"]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Create (0.8ms)[0m  [1m[32mINSERT INTO "strains" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "unique name"], ["created_at", "2021-06-08 03:22:43.986837"], ["updated_at", "2021-06-08 03:22:43.986837"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Create (0.7ms)[0m  [1m[32mINSERT INTO "strains" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", ""], ["created_at", "2021-06-08 03:22:44.009695"], ["updated_at", "2021-06-08 03:22:44.009695"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Create (0.9ms)[0m  [1m[32mINSERT INTO "strains" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-06-08 03:22:44.017711"], ["updated_at", "2021-06-08 03:22:44.017711"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Create (0.9ms)[0m  [1m[32mINSERT INTO "strains" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Carmenere"], ["created_at", "2021-06-08 03:22:44.026054"], ["updated_at", "2021-06-08 03:22:44.026054"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Create (1.0ms)[0m  [1m[32mINSERT INTO "strains" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Carmenere"], ["created_at", "2021-06-08 03:25:01.820345"], ["updated_at", "2021-06-08 03:25:01.820345"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Create (0.8ms)[0m  [1m[32mINSERT INTO "strains" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Carmenere"], ["created_at", "2021-06-08 03:25:01.825778"], ["updated_at", "2021-06-08 03:25:01.825778"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Create (1.0ms)[0m  [1m[32mINSERT INTO "strains" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Carmenere"], ["created_at", "2021-06-08 03:25:13.325629"], ["updated_at", "2021-06-08 03:25:13.325629"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Create (0.8ms)[0m  [1m[32mINSERT INTO "strains" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Carmenere"], ["created_at", "2021-06-08 03:25:13.330136"], ["updated_at", "2021-06-08 03:25:13.330136"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "strains" WHERE "strains"."name" = $1 LIMIT $2[0m  [["name", "Carmenere"], ["LIMIT", 1]]
+  [1m[36mStrain Create (0.9ms)[0m  [1m[32mINSERT INTO "strains" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Carmenere"], ["created_at", "2021-06-08 03:27:12.695993"], ["updated_at", "2021-06-08 03:27:12.695993"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "strains" WHERE "strains"."name" = $1 LIMIT $2[0m  [["name", "Carmenere"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mStrain Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "strains" WHERE "strains"."name" = $1 LIMIT $2[0m  [["name", "Carmenere"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "strains" WHERE "strains"."name" = $1 LIMIT $2[0m  [["name", "Carmenere"], ["LIMIT", 1]]
+  [1m[36mStrain Create (1.0ms)[0m  [1m[32mINSERT INTO "strains" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Carmenere"], ["created_at", "2021-06-08 03:29:07.268800"], ["updated_at", "2021-06-08 03:29:07.268800"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "strains" WHERE "strains"."name" = $1 LIMIT $2[0m  [["name", "Carmenere"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "strains" WHERE "strains"."name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "strains" WHERE "strains"."name" = $1 LIMIT $2[0m  [["name", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mStrain Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "strains" WHERE "strains"."name" = $1 LIMIT $2[0m  [["name", "Carmenere"], ["LIMIT", 1]]
+  [1m[36mStrain Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "strains" WHERE "strains"."name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mStrain Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "strains" WHERE "strains"."name" = $1 LIMIT $2[0m  [["name", ""], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "strains" WHERE "strains"."name" = $1 LIMIT $2[0m  [["name", "Carmenere"], ["LIMIT", 1]]
+  [1m[36mStrain Create (0.9ms)[0m  [1m[32mINSERT INTO "strains" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Carmenere"], ["created_at", "2021-06-08 03:30:27.749059"], ["updated_at", "2021-06-08 03:30:27.749059"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "strains" WHERE "strains"."name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "strains" WHERE "strains"."name" = $1 LIMIT $2[0m  [["name", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mStrain Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "strains" WHERE "strains"."name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mStrain Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "strains" WHERE "strains"."name" = $1 LIMIT $2[0m  [["name", ""], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "strains" WHERE "strains"."name" = $1 LIMIT $2[0m  [["name", "Carmenere"], ["LIMIT", 1]]
+  [1m[36mStrain Create (0.8ms)[0m  [1m[32mINSERT INTO "strains" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Carmenere"], ["created_at", "2021-06-08 03:30:28.041358"], ["updated_at", "2021-06-08 03:30:28.041358"]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStrain Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "strains" WHERE "strains"."name" = $1 LIMIT $2[0m  [["name", "Carmenere"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mStrain Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "strains" WHERE "strains"."name" = $1 LIMIT $2[0m  [["name", "Carmenere"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 8ms (ActiveRecord: 0.0ms | Allocations: 1718)
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 152)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 140)
+  [1m[36mWine Load (0.9ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWine Create (1.4ms)[0m  [1m[32mINSERT INTO "wines" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Wine"], ["created_at", "2021-06-08 03:31:39.863193"], ["updated_at", "2021-06-08 03:31:39.863193"]]
+  [1m[35m (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.cl"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@test.cl"], ["encrypted_password", "$2a$04$wocpGb0onlutYEcMG1H/l.QBGWo9uq42CwgqSVHV2FCSXemuji9Ly"], ["created_at", "2021-06-08 03:31:39.893869"], ["updated_at", "2021-06-08 03:31:39.893869"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by WinesController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mWine Load (0.5ms)[0m  [1m[34mSELECT "wines".* FROM "wines" WHERE "wines"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+Redirected to http://test.host/
+Filter chain halted as :authorize_admin! rendered or redirected
+Completed 302 Found in 10ms (ActiveRecord: 1.3ms | Allocations: 808)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 8ms (ActiveRecord: 0.0ms | Allocations: 1718)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 152)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 140)
+  [1m[36mWine Load (1.0ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWine Create (1.2ms)[0m  [1m[32mINSERT INTO "wines" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Wine"], ["created_at", "2021-06-08 03:35:45.389820"], ["updated_at", "2021-06-08 03:35:45.389820"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.cl"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@test.cl"], ["encrypted_password", "$2a$04$dRR0mwqQ1jpujNbIVq91BeTlaZQ6fyMVSdD5F0ZmIzh/PW46SkVvC"], ["created_at", "2021-06-08 03:35:45.418727"], ["updated_at", "2021-06-08 03:35:45.418727"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by WinesController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mWine Load (0.5ms)[0m  [1m[34mSELECT "wines".* FROM "wines" WHERE "wines"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+Redirected to http://test.host/
+Filter chain halted as :authorize_admin! rendered or redirected
+Completed 302 Found in 9ms (ActiveRecord: 1.3ms | Allocations: 808)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 8ms (ActiveRecord: 0.0ms | Allocations: 1718)
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 152)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Processing by WinesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 140)
+  [1m[36mWine Load (1.1ms)[0m  [1m[34mSELECT "wines".* FROM "wines"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWine Create (1.2ms)[0m  [1m[32mINSERT INTO "wines" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Wine"], ["created_at", "2021-06-08 03:39:08.378150"], ["updated_at", "2021-06-08 03:39:08.378150"]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.cl"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@test.cl"], ["encrypted_password", "$2a$04$5XSU9Y9VFoPR3sAzmGIbcu1TA/QVO6.yWhVhJeQVbwVQ0UyG1gnpi"], ["created_at", "2021-06-08 03:39:08.409740"], ["updated_at", "2021-06-08 03:39:08.409740"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by WinesController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mWine Load (0.3ms)[0m  [1m[34mSELECT "wines".* FROM "wines" WHERE "wines"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Redirected to http://test.host/
+Filter chain halted as :authorize_admin! rendered or redirected
+Completed 302 Found in 8ms (ActiveRecord: 1.2ms | Allocations: 808)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m

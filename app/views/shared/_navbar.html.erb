@@ -8,19 +8,25 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav nav-ra">
-        <% if current_user.admin? %>
-        <li class="nav-item">
-          <%= link_to 'Wines', root_path, class:'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Oenologists', oenologists_path, class:'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Strains', strains_path, class:'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class:'nav-link' %>
-        </li>
+        <% if signed_in? %>
+          <% if current_user.admin? %>
+          <li class="nav-item">
+            <%= link_to 'Wines', root_path, class:'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Oenologists', oenologists_path, class:'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Strains', strains_path, class:'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class:'nav-link' %>
+          </li>
+          <% else %>
+          <li class="nav-item">
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class:'nav-link' %>
+          </li>
+          <% end %>
         <% end %>
       </ul>
     </div>
